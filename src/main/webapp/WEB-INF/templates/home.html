@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Paye ta soirée</title>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/custom.css">
+
+</head>
+<body>
+	<header th:replace="~{common::header}"></header>
+
+	<div id="mainContent" class="container-fluid">
+		<section class="ajoutsoiree">
+			<article class="soireeCadre">
+				<h3>Les soirées</h3>
+				<p class="sousTitre">Voici la liste des soirées disponibles près de chez toi!</p>
+			</article>
+		</section>
+		<section class="ajoutsoiree">
+			<article class="soireeCadre">
+			<h3>Filtres</h3>
+			<form class="forumulaireLigne" method="post">
+				<div class="groupeFormulaire">
+					<label for="villeInput">Ville</label>
+					<select class="formulaireControle" id="villeInput" name="ville">
+						<option value="">Toutes les villes</option>
+						<option th:each="ville : ${villes}" th:value="${ville.name()}" th:text="${ville.label}" th:selected="${villeFilter != null && ville.name() == villeFilter.name()}"></option>
+					</select>
+				</div>
+				<input type="submit" class="bouton1" value="Filtrer">
+			</form>
+			</article>
+		</section>
+
+		<section class="listeSoiree">
+			<article class="soireeCadre" th:each="soiree : ${soirees}">
+				<h3 th:text="${soiree.name}"></h3>
+				<p th:text="${soiree.resume}" class="resume"></p>
+				<p th:text="${soiree.ville.getLabel()}" class="ville"></p>
+				<p th:text="${soiree.dateSoiree}" class="dateSoiree"></p>
+				<div class="boutonOutil" role="toolbar">
+					<div class="groupeBouton" role="group">
+						<a th:href="'detail?id='+${soiree.id}" class="bouton1"><i class="fa fa-arrow-circle-o-right"
+							aria-hidden="true"></i>  En savoir plus</a>
+					</div>
+				</div>
+				<aside class="soireePhoto">
+					<img th:src="'image?id='+${soiree.id}" th:alt="'Image ' +${soiree.name}">
+				</aside>
+			</article>
+		</section>
+	</div>
+</body>
+</html>

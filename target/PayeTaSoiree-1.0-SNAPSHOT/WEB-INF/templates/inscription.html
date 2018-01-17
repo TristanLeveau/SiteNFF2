@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Paye ta soirée</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+<header th:replace="~{common::header}"></header>
+
+<div id="mainContent" class="container-fluid">
+    <section class="ajoutsoiree">
+        <article class="soireeCadre">
+            <h3>Participation</h3>
+            <p class="sousTitre">Inscris-toi pour pouvoir participer à la soirée!</p>
+            <form method="post" class="formulaireHorizontal">
+                <div class="groupeFormulaire">
+                    <label for="inputNom" class="colonne1 control-label">Nom</label>
+                    <div class="colonne2">
+                        <input type="text" class="formulaireControle" name="nom" id="inputNom" placeholder="Nom" th:value="${utilisateur.nom}">
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <label for="inputPrenom" class="colonne1 control-label">Prénom</label>
+                    <div class="colonne2">
+                        <input type="text" class="formulaireControle" name="prenom" id="inputPrenom" placeholder="Prénom" th:value="${utilisateur.prenom}">
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <label for="inputMail" class="colonne1 control-label">Adresse Mail</label>
+                    <div class="colonne2">
+                        <input type="text" class="formulaireControle" name="email" id="inputMail" placeholder="Email" th:value="${utilisateur.email}">
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <label for="inputMDP" class="colonne1 control-label">Mot de passe</label>
+                    <div class="colonne3">
+                        <input type="password" class="formulaireControle" name="motDePasse" id="inputMDP" placeholder="Mot de passe" maxlength="150" th:value="${utilisateur.motDePasse}">
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <label for="inputMDP2" class="colonne1 control-label">Confirmer le mot de passe</label>
+                    <div class="colonne3">
+                        <input type="password" class="formulaireControle" name="motDePasse2" id="inputMDP2" placeholder="Mot de passe" maxlength="150">
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <div class="colonne3">
+                        <button type="submit" class="bouton1">Connexion</button>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Paye ta soirée</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+<header th:replace="~{common::header}"></header>
+
+<div id="mainContent" class="container-fluid">
+    <section class="ajoutsoiree">
+        <article class="soireeCadre">
+            <h3>Suppression</h3>
+            <p class="sousTitre">Êtes-vous sûr de vouloir supprimer l'evenement ?</p>
+
+            <div class="btn-toolbar actionbar" role="toolbar">
+                <div class="groupeBouton" role="group">
+                    <a th:href="'suppression?confirmation=true&id='+${soiree.id}" class="bouton1"><i class="fa fa-remove" aria-hidden="true"></i> Supprimer</a>
+                </div>
+                <div class="groupeBouton" role="group">
+                <a href="home" class="bouton1"><i class="fa fa-reply" aria-hidden="true"></i> Annuler</a>
+                </div>
+            </div>
+        </article>
+    </section>
+</div>
+</body>
+</html>

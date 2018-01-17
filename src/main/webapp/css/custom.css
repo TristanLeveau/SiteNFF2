@@ -1,0 +1,209 @@
+body {
+	background-image: linear-gradient(to right,lightgreen 0%, white 70%);
+}
+
+.sousTitre {
+	margin-top : 10px;
+}
+
+#menu {
+	font-family:fantasy;
+	color: white;
+	background-image: linear-gradient(to right, white 0%, lightgreen 70%);
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:15px;
+    width:170px;
+}
+
+#menu h1, h2 {
+	background-image: linear-gradient(to right, white 0%, lightgreen 70%);
+	padding:20px 5px;	
+    color: black;
+    font-weight: bold;
+}
+
+#menu nav a {
+	background-image: linear-gradient(to right, white 0%, lightgreen 70%);
+	color : black;
+}
+
+
+
+#mainContent {
+	margin-left:180px;
+	font-family:fantasy;
+}
+
+#mainContent2 {
+	margin-left:180px;
+	font-family:fantasy;
+}
+
+.soireeCadre {
+	height:200px;
+	background-color:white;
+	margin:20px;
+	box-shadow: 0 0 25px grey;
+	position:relative;
+	padding:5px 135px 5px 5px;
+	border-radius: 10px;
+	border-color: black;
+}
+
+.soireeCadre .soireePhoto {
+	position:absolute;
+	top:0;
+	right:0;
+	border-radius: 10px;
+}
+
+.soireeCadre .soireePhoto img {
+	width:130px;
+	height:200px;
+	border-radius: 10px;
+}
+
+.soireeCadre h3 {
+	background-image: linear-gradient(to right, white 0%, lightgreen 70%);
+	margin:0;
+	padding:5px;
+}
+
+.listeSoiree {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.listeSoiree .soireeCadre {
+	width:500px;
+	min-width:400px;
+}
+
+.listeSoiree .soireeCadre:hover {
+	transform: scale(0.9);
+	transition: all .2s ease-in-out;
+}
+
+.listeSoiree .soireeCadre p {
+	margin:10px 0;
+}
+
+.listeSoiree .soireeCadre .actionbar {
+	position: absolute;
+    bottom: 15px;
+    left: 20px;
+}
+
+
+
+
+.soireedetail .soireeCadre {
+	height: auto;
+	min-width:820px;
+	min-height: 400px;
+}
+
+.soireedetail .soireeinfos {
+	width:300px;
+}
+
+
+.soireedetail .soireeinfos p {
+	margin: 5px;
+}
+
+.soireedetail .soireeinfos p {
+	margin: 5px;
+}
+
+.ajoutsoiree .soireeCadre {
+	padding:5px;
+	height: inherit;
+}
+
+.ajoutsoiree .soireeCadre form {
+	padding:10px;
+}
+
+.ajoutsoiree .soireeCadre p.alert {
+	margin:10px 100px;
+}
+
+.container-fluid {
+	padding-right:15px;
+	padding-left:15px;
+	margin-right:auto;
+	margin-left:auto
+}
+.form-inline .groupeFormulaire {
+	display:inline-block;
+	margin-bottom:0;
+	vertical-align:middle
+}
+.forumulaireLigne .formulaireControle {
+	display:inline-block;
+	width:auto;
+	vertical-align:middle
+}
+.formulaireHorizontal .control-label{
+	padding-top:7px;
+	margin-bottom:0;
+	text-align:right
+}
+.navigation2>li {
+	float:none
+}
+.navigation2>li+li {
+	margin-top:2px;margin-left:0
+}
+.boutonOutil .btn,.boutonOutil .groupeBouton{
+	float:left
+}
+.boutonOutil>.btn,.boutonOutil>.groupeBouton{
+	margin-left:5px
+}
+.navigation1>li {
+	position:relative;display:block
+}
+.navigation1>li>a {
+	position:relative;display:block;padding:10px 15px
+}
+
+.bouton1 {
+	color:black;
+	background-image: linear-gradient(to right, white 0%, green 70%);
+	font-family: fantasy;
+}
+.bouton2 {
+	color:black;
+	background-image: linear-gradient(to right, white 0%, lightgreen 70%);
+	font-family: fantasy;
+}
+.groupeFormulaire {
+	margin-bottom:15px
+}
+.colonne1 .colonne2 .colonne3 {
+	position:relative;
+	min-height:1px;
+	padding-right:15px;
+	padding-left:15px;
+	float:left;
+}
+.colonne1 {
+	width:16.66666667%;
+}
+.colonne3{
+	width:83.33333333%
+}
+.colonne2{
+	width:33.33333333%
+}
+
+.groupeBouton {
+	position:relative;
+	display:inline-block;
+	vertical-align:middle;
+}
+
