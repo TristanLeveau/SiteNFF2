@@ -1,6 +1,6 @@
 package daos;
 
-import exceptions.PayeTaSoireeRuntimeException;
+import exceptions.NFFRuntimeException;
 import pojos.Participant;
 
 import java.sql.Connection;
@@ -12,23 +12,23 @@ import java.util.List;
 
 public class ParticipantDao {
 
-    public void addParticipant(Participant newParticipant, Integer idSoiree) {
+    public void addParticipant(Participant newParticipant, Integer idLivraison) {
         try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
              PreparedStatement statement = connection.prepareStatement("INSERT INTO participant(nom, prenom,email,motDePasse,soiree) VALUES (?, ?,?,?,?)")) {
             statement.setString(1, newParticipant.getNom());
             statement.setString(2, newParticipant.getPrenom());
             statement.setString(3, newParticipant.getEmail());
             statement.setString(4, newParticipant.getMotDePasse());
-            statement.setInt(5, idSoiree);
+            statement.setInt(5, idLivraison);
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new PayeTaSoireeRuntimeException("Erreur lors de la récupération des données", e);
+            throw new NFFRuntimeException("Erreur lors de la récupération des données", e);
         }
     }
 
 
-    public List<Participant> ListeParticipantsSoiree(Integer idSoiree) {
+    public List<Participant> ListeParticipantsLivraison(Integer idSoiree) {
         List<Participant> participantList = new ArrayList<>();
         try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM participant WHERE soiree=? ORDER BY nom DESC")) {
@@ -46,7 +46,7 @@ public class ParticipantDao {
                 }
             }
         } catch (SQLException e) {
-            throw new PayeTaSoireeRuntimeException("Erreur lors de l'ajout...",e);
+            throw new NFFRuntimeException("Erreur lors de l'ajout...",e);
         }
         return participantList;
     }

@@ -1,8 +1,8 @@
 package servlets;
 
 import pojos.Participant;
-import pojos.Soiree;
-import services.SoireeService;
+import pojos.Livraison;
+import services.LivraisonService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -22,10 +22,10 @@ public class InscriptionServlet extends AbstractGenericServlet {
         WebContext context = new WebContext(req, resp, getServletContext());
         if(req.getSession().getAttribute("utilisateurCreationError") != null) {
             context.setVariable("errorMessage", req.getSession().getAttribute("utilisateurCreationError"));
-            context.setVariable("city", (Soiree) req.getSession().getAttribute("utilisateurCreationData"));
+            context.setVariable("Livraison", (Livraison) req.getSession().getAttribute("utilisateurCreationData"));
 
-            req.getSession().removeAttribute("cityCreationError");
-            req.getSession().removeAttribute("cityCreationData");
+            req.getSession().removeAttribute("LivraisonCreationError");
+            req.getSession().removeAttribute("LivraisonCreationData");
         } else {
             context.setVariable("utilisateur", new Participant(0,null,null, null, null));
         }
@@ -40,17 +40,17 @@ public class InscriptionServlet extends AbstractGenericServlet {
          String email = req.getParameter("email");
          String motDePasse = req.getParameter("motDePasse");
 
-         Integer idSoiree = Integer.parseInt(req.getParameter("id"));
+         Integer idLivraison = Integer.parseInt(req.getParameter("id"));
 
         Participant newParticipant = new Participant(null, nom, prenom,email, motDePasse);
 
         try {
-            SoireeService.getInstance().addParticipant(newParticipant,idSoiree);
-            resp.sendRedirect(String.format("detail?id=%d",idSoiree  ));
+            LivraisonService.getInstance().addParticipant(newParticipant,idLivraison);
+            resp.sendRedirect(String.format("detail?id=%d",idLivraison  ));
         } catch (IllegalArgumentException e) {
             req.getSession().setAttribute("cityCreationError", e.getMessage());
             req.getSession().setAttribute("cityCreationData", newParticipant);
-            resp.sendRedirect(String.format("detail?id=%d",idSoiree  ));
+            resp.sendRedirect(String.format("detail?id=%d",idLivraison  ));
         }
 
     }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Paye ta livraison</title>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/custom.css">
+
+</head>
+<body>
+	<header th:replace="~{common::header}"></header>
+
+	<div id="mainContent" class="container-fluid">
+		<section class="ajoutsoiree">
+			<article class="soireeCadre">
+				<h3>Ajouter une livraison</h3>
+				<p class="alert alert-danger" role="alert" th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
+				<form method="post" class="formulaireHorizontal" enctype="multipart/form-data">
+					<div class="groupeFormulaire">
+						<label for="inputDateSoiree" class="colonne1 control-label">Date</label>
+						<div class="colonne2">
+							<input type="text" class="formulaireControle" name="dateSoiree" id="inputDateSoiree" placeholder="JJ/MM/AAAA" maxlength="10" th:value="${livraison.dateSoiree}">
+						</div>
+					</div>
+					<div class="groupeFormulaire">
+						<label for="inputResume" class="colonne1 control-label">Contenu</label>
+						<div class="colonne3">
+							<textarea class="formulaireControle" name="resume" id="inputResume" placeholder="Résumé" maxlength="150" th:value="${livraison.resume}">[[${livraison.resume}]]</textarea>
+						</div>
+					</div>
+					<div class="groupeFormulaire">
+				    	<div class="colonne3">
+				      		<button type="submit" class="bouton1">Ajouter la livraison</button>
+				    	</div>
+				  	</div>
+				</form>
+			</article>
+		</section>
+	</div>
+</body>
+</html>

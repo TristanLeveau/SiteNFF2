@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Paye ta livraison</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+<body>
+<header th:replace="~{common::header}"></header>
+
+<div id="mainContent" class="container-fluid">
+    <section class="ajoutsoiree">
+        <article class="soireeCadre">
+            <h3>Modifier la soirée</h3>
+            <p class="alert alert-danger" role="alert" th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
+            <form method="post" class="formulaireHorizontal" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="inputName" class="colonne1 control-label">Nom de la soirée</label>
+                    <div class="colonne2">
+                        <input type="text" class="formulaireControle" name="name" id="inputName" placeholder="Nom" th:value="${livraison.name}">
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <label for="inputVille" class="colonne1 control-label">Ville</label>
+                    <div class="colonne2">
+                        <select class="formulaireControle" name="semestre" id="inputVille" th:value="${livraison.semestre}">
+                            <option th:each="semestre : ${villes}" th:value="${semestre.name()}" th:text="${semestre.label}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <label for="inputResume" class="colonne1 control-label">Résumé</label>
+                    <div class="colonne3">
+                        <textarea class="formulaireControle" name="resume" id="inputResume" placeholder="Résumé" maxlength="150" th:value="${livraison.resume}">[[${livraison.resume}]]</textarea>
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <label for="inputDateSoiree" class="colonne1 control-label">Date</label>
+                    <div class="colonne2">
+                        <input type="text" class="formulaireControle" name="dateSoiree" id="inputDateSoiree" placeholder="JJ/MM/AAAA" maxlength="10" th:value="${livraison.dateSoiree}">
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <label for="inputImage" class="colonne1 control-label">Image</label>
+                    <div class="colonne2">
+                        <input type="file"class="formulaireControle" name="imageSoiree" id="inputImage" maxlength="10">
+                    </div>
+                </div>
+                <div class="groupeFormulaire">
+                    <div class="colonne3">
+                        <button type="submit" class="bouton1">Modifier la soirée</button>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </section>
+</div>
+</body>
+</html>
