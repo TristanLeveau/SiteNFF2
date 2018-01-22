@@ -14,7 +14,7 @@ public class ParticipantDao {
 
     public void addParticipant(Participant newParticipant, Integer idLivraison) {
         try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-             PreparedStatement statement = connection.prepareStatement("INSERT INTO participant(nom, prenom,email,motDePasse,soiree) VALUES (?, ?,?,?,?)")) {
+             PreparedStatement statement = connection.prepareStatement("INSERT INTO participant(nom, prenom,email,motDePasse,livraison) VALUES (?, ?,?,?,?)")) {
             statement.setString(1, newParticipant.getNom());
             statement.setString(2, newParticipant.getPrenom());
             statement.setString(3, newParticipant.getEmail());
@@ -28,11 +28,11 @@ public class ParticipantDao {
     }
 
 
-    public List<Participant> ListeParticipantsLivraison(Integer idSoiree) {
+    public List<Participant> ListeParticipantsLivraison(Integer idLivraison) {
         List<Participant> participantList = new ArrayList<>();
         try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM participant WHERE soiree=? ORDER BY nom DESC")) {
-            statement.setInt(1, idSoiree);
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM participant WHERE livraison=? ORDER BY nom DESC")) {
+            statement.setInt(1, idLivraison);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     participantList.add(new Participant(
