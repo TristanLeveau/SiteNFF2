@@ -1,7 +1,7 @@
 package servlets;
 
-import pojos.Ville;
-import services.SoireeService;
+import pojos.Semestre;
+import services.LivraisonService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -20,27 +20,27 @@ public class HomeServlet extends AbstractGenericServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 
-		Ville villeFilter = (Ville) req.getSession().getAttribute("villeFilter");
+		Semestre semestreFilter = (Semestre) req.getSession().getAttribute("semestreFilter");
 
 
 		WebContext context = new WebContext(req, resp, getServletContext());
-		context.setVariable("soirees", SoireeService.getInstance().listAllSoirees(villeFilter));
-		context.setVariable("villes", Ville.values());
-		context.setVariable("villeFilter", villeFilter);
+		context.setVariable("livraisons", LivraisonService.getInstance().listAllLivraisons(semestreFilter));
+		context.setVariable("semestres", Semestre.values());
+		context.setVariable("semestreFilter", semestreFilter);
 
 		templateEngine.process("home", context, resp.getWriter());
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String villeName = req.getParameter("ville");
+		String villeName = req.getParameter("semestre");
 
-		Ville ville = null;
+		Semestre semestre = null;
 		try {
-			ville = Ville.valueOf(villeName);
+			semestre = Semestre.valueOf(villeName);
 		} catch (IllegalArgumentException ignored) {}
 
-		req.getSession().setAttribute("villeFilter", ville);
+		req.getSession().setAttribute("villeFilter", semestre);
 
 		resp.sendRedirect("home");
 	}

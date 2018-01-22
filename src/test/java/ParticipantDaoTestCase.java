@@ -18,7 +18,7 @@ public class ParticipantDaoTestCase extends AbstractDaoTestCase {
 
     @Override
     public void insertDataSet(Statement statement) throws Exception {
-        statement.executeUpdate("INSERT INTO soiree(id, name, summary,ville,dateSoiree) VALUES(1, 'Soiree 1', 'Résumé 1','Lille','11/11/2018')");
+        statement.executeUpdate("INSERT INTO soiree(id, name, summary,ville,dateSoiree) VALUES(1, Livraison, 'Résumé 1','Lille','11/11/2018')");
         statement.executeUpdate("INSERT INTO soiree(id, name, summary,ville,dateSoiree) VALUES(2, 'Soiree 2', 'Résumé 2', 'Paris','11/11/2018')");
         statement.executeUpdate("INSERT INTO participant(id, nom, prenom, email, soiree) VALUES (1, 'Tristan', 'LEVEAU', 'tristan.leveau@hei.yncrea.fr', 1)");
         statement.executeUpdate("INSERT INTO participant(id, nom, prenom, email, soiree) VALUES (2, 'John', 'Jackson', 'John.Jackson@hei.yncrea.fr', 2)");
@@ -29,7 +29,7 @@ public class ParticipantDaoTestCase extends AbstractDaoTestCase {
     @Test
     public void shouldListParticipantBySoiree() {
         // WHEN
-        List<Participant> participants = participantDao.ListeParticipantsSoiree(1);
+        List<Participant> participants = participantDao.ListeParticipantsLivraison(1);
         // THEN
         assertThat(participants).hasSize(2);
         assertThat(participants).extracting("id", "nom", "prenom", "email").containsExactly(

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Paye ta livraison</title>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/custom.css">
+
+</head>
+<body>
+	<header th:replace="~{common::header}"></header>
+
+	<div id="mainContent" class="container-fluid">
+		<section class="soireedetail">
+			<section class="soireeCadre">
+				<h3 th:text="${livraison.name}"></h3>
+				<div class="soireeinfos">
+					<h4>Résumé :</h4>
+					<p th:text="${livraison.resume}" class="resume"></p>
+					<h4>Ville :</h4>
+					<p th:text="${livraison.semestre.getLabel()}" class="semestre"></p>
+					<h4>Date :</h4>
+					<p th:text="${livraison.dateSoiree}" class="date"></p>
+				</div>
+				<div class="boutonOutil" role="toolbar">
+					<div class="groupeBouton" role="group">
+						<a th:href="'soireemodif?id='+${livraison.id}" class="bouton1"><i class="fa fa-reply" aria-hidden="true"></i>Modifier la soirée</a>
+					</div>
+					<div class="groupeBouton" role="group">
+						<a th:href="'suppression?id='+${livraison.id}" class="bouton1"><i class="fa fa-remove" aria-hidden="true"></i>Supprimer la soirée</a>
+					</div>
+					<div class="groupeBouton" role="group">
+						<a th:href="'inscription?id='+${livraison.id}" class="bouton2"><i class="fa fa-check" aria-hidden="true"></i>Je participe!</a>
+					</div>
+				</div>
+				<aside class="soireePhoto">
+					<img src="img/Four-hands-holing-pints-of-beer.jpg" alt="Image Soirée">
+				</aside>
+			</section>
+		</section>
+		<section class="ajoutsoiree">
+			<article class="soireeCadre">
+				<h3>Participants</h3>
+				<p class="sousTitre">Voici les participants!</p>
+			</article>
+		</section>
+		<section class="listeSoiree">
+			<article class="soireeCadre" th:each="participant : ${participants}">
+				<h3 th:text="${participant.id}"></h3>
+				<p th:text="${participant.prenom}"></p>
+				<p th:text="${participant.nom}"></p>
+				<p th:text="${participant.email}"></p>
+			</article>
+		</section>
+	</div>
+</body>
+</html>

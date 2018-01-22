@@ -1,6 +1,6 @@
 package servlets;
 
-import services.SoireeService;
+import services.LivraisonService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +33,7 @@ public class ImageServlet extends AbstractGenericServlet{
 
         Integer id = Integer.parseInt(req.getParameter("id"));
 
-        Path imagePath = SoireeService.getInstance().getSoireeImage(id);
+        Path imagePath = LivraisonService.getInstance().getLivraisonImage(id);
 
         String pictureFileName = imagePath.getFileName().toString();
         String pictureFileExtension = pictureFileName.substring(pictureFileName.lastIndexOf(".") + 1);
