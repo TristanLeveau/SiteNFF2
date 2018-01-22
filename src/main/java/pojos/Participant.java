@@ -5,7 +5,7 @@ public class Participant {
     private Integer id;
     private String nom;
     private String prenom;
-    private String email;
+    private String e-mail;
     private String motDePasse;
 
     public Integer getId() {
